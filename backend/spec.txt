@@ -1,0 +1,14 @@
+// title: string, desc:string, catagory: string, brand: string, price: number, discount: number, quantity: number, totalsale: number,
+ image: string, color: string[array], ratings: string[array], badge: string
+
+
+
+
+express for project init
+nodemon for continous run
+dotenv to excess env data 
+pg using postgress new database
+jwt for webtoken 
+bcrypt for hashing password 
+cookie-parser for cookie parsing 
+multer for upload the image file
