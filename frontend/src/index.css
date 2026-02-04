@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+
+
+
+
+.dark{
+  color: #213448;
+}
+.dark-background{
+  background-color: #213448;
+}
+
+.lighter-dark{
+  color: #547792;
+}
+.lighter-dark-background{
+  background-color: #547792;
+}
+
+.mid-light{
+  color: #94B4C1;
+}
+.mid-light-background{
+  background-color: #94B4C1;
+}
+
+.light{
+  color: #EAE0CF;
+}
+.light-background{
+  background-color: #EAE0CF;
+}
+
+
