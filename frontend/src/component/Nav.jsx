@@ -32,7 +32,7 @@ const Nav = () => {
     ];
 
   return (
-    <div className='lighter-dark-background light text-xl'>
+    <div className='lighter-dark-background light text-xl sticky top-0 z-100'>
         {/* upper nav */}
         <div className='dark-background light text-sm flex justify-end py-2 border-b border-gray-600'>
             <ul className='flex gap-5'>
@@ -70,7 +70,7 @@ const Nav = () => {
                 {
                     navData.map((link, index) => (
                         <SwiperSlide key={index}>
-                            <a className='hover:opacity-70 active:opacity-80' href={`/${link.url}`}>{link.name}</a>
+                            <a className='hover:opacity-70 active:opacity-80' href={link.url}>{link.name}</a>
                         </SwiperSlide>
                     ))
                 }
