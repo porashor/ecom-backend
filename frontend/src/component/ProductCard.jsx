@@ -1,13 +1,15 @@
 import React from 'react'
 import { CiStar } from 'react-icons/ci'
 
-const ProductCard = () => {
+const ProductCard = ({data}) => {
+  console.log(data); 
   return (
     <div className='w-37.5 p-2 hover:shadow shadow-gray-500 space-y-1'>
-        <img src="https://parashardaspro.netlify.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdythjh03y%2Fimage%2Fupload%2Fv1762194666%2Fskill%2Fnswd1snqbzcsuu4rhole.png&w=128&q=75" alt="" />
-        <h1 className='text-lg font-semibold'>Product name</h1>
-        <h1 className='text-sm font-bold'>Product price</h1>
+        <img src={data?.image} className='w-35 aspect-square object-cover' alt="" />
+        <h1 className='text-lg font-semibold'>{data?.title}</h1>
+        <h1 className='text-sm font-bold'>{data?.price}</h1>
         <h1><CiStar/></h1>
+        <button className='text-white bg-yellow-500 w-full py-2 rounded-lg font-semibold cursor pointer'>Add to Cart</button>
     </div>
   )
 }

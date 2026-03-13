@@ -9,8 +9,6 @@ async function getProducts(req, res) {
         res.status(200).json(data.rows)
     }catch(err){
         console.log(err)
-    }finally{
-        db.release()
     }
 }
 

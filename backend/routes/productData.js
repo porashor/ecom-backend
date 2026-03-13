@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('', async (req, res) => getProducts(req, res));
 
-router.post("/upload", photoupload, async (req, res)=> productUpload(req, res))
+router.post("/upload", photoupload, async (req, res)=> await productUpload(req, res))
 
 
 export default router;

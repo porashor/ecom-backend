@@ -17,6 +17,8 @@ export const useProductStore = create((set) => ({
     setBrand: (brand) => set({brand}),
     badge: '',
     setBadge: (badge) => set({badge}),
+    allProducts: [],
+    loading: false,
     uploadProduct: async (e, title, price, cetagory, quantity, brand, badge, image, desc) => {
         e.preventDefault()
         console.log(image)
@@ -44,6 +46,18 @@ export const useProductStore = create((set) => ({
             console.log(error)
         }
     },
+    getProducts: async () => {
+        set({loading: true})
+        try {
+            const response = await fetch(import.meta.env.VITE_API + '/products')
+            const data = await response.json()
+            set({allProducts: data})
+        } catch (error) {
+            console.log(error)
+        }finally{
+            set({loading: false})
+        }
+    }
 }))
 
 

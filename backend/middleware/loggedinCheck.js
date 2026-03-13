@@ -9,13 +9,14 @@ async function loggedInCheck(req, res, next) {
     const client = await db.connect();
     try {
         //get token and convart it to a user email
-        const email = jwt.verify(token, process.env.JWT_SECRET || 'secretkey').email;
-        console.log(email)
-        const result = await client.query('SELECT * FROM users WHERE email = $1', [email]);
+        const emails = jwt.verify(token, process.env.JWT_SECRET || 'secretkey').email;
+        console.log(emails)
+        const result = await client.query('SELECT * FROM users WHERE email = $1', [emails]);
         if (result.rows.length === 0) {
             return res.status(401).json({ message: 'Unauthorized' });
         }
-        req.user = result.rows[0];
+        const {username, email} = result.rows[0];
+        req.user = {username, email};
         next();
     } catch (error) {
         console.error(error);
@@ -27,7 +28,7 @@ async function loggedInCheck(req, res, next) {
 
 export const signOutUser = (res) => {
     res.clearCookie('token');
-    res.status(200).json({ message: 'User logged out successfully' });
+    res.status(200).json({ success: true, message: 'User logged out successfully' });
 }
 
 

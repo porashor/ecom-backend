@@ -15,15 +15,11 @@ const SaleBoard = ({headline, data}) => {
                 <button className='border border-gray-500 px-3 py-2 text-xl font-semibold'>Shop all products</button>
             </div>
             {/* //product list  */}
-            <div className='flex justify-between gap-1 py-2'>
+            <div className='grid grid-cols-6 justify-start gap-1 py-2'>
                 {/* //card load here  */}
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
+                {
+                  data && data.length > 0 ? data.map((item, index) => <ProductCard key={index} data={item}/>) : <p>No products available</p>
+                }
             </div>
         </div>
       </div>

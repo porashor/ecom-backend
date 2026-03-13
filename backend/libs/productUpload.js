@@ -4,14 +4,18 @@ dotenv.config();
 
 const productUpload = async (req, res) => {
     const {filename} = req.file;
-    const { title, desc, category, brand, price, discount, quantity, totalsale, color, ratings, badge } = req.body;
+    const { title, desc, cetagory, brand, price, quantity, badge } = req.body;
     const ports = process.env.PORT || 3000
     const image = `http://localhost:${ports}/uploads/${filename}`
+    console.log(req.body);
     try {
+        if(!title || !price || !cetagory || !quantity || !brand || !badge || !desc){
+            return res.status(400).json({ message: 'Please fill all the fields' });
+        }
         const client = await db.connect();
 
         //create a table for products
-        const productTable = client.query(`
+        const productTable = await client.query(`
             CREATE TABLE IF NOT EXISTS products (
                 id SERIAL PRIMARY KEY,
                 title VARCHAR(255) NOT NULL,
@@ -33,10 +37,9 @@ const productUpload = async (req, res) => {
         }
 
         //insert product data into products table
-        const product = client.query(`
+        const product = await client.query(`
             INSERT INTO products (title, description, category, brand, price, discount, quantity, totalsale, image, color, ratings, badge)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        `, [title, desc, category, brand, price, discount, quantity, totalsale, image, color, ratings, badge]);
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`, [title, desc, cetagory, brand, price, "0", quantity, "0", image, 'no', "0", badge]);
 
         if(!product){
             return res.status(500).json({ message: 'Error uploading product' });

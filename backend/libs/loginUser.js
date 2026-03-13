@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 async function loginUser(req, res) {
+    console.log(req.body);
     const { email, password } = req.body;
     const client = await db.connect();
     try {

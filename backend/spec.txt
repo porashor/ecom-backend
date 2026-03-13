@@ -12,3 +12,4 @@ jwt for webtoken
 bcrypt for hashing password 
 cookie-parser for cookie parsing 
 multer for upload the image file
+cors install for cross origin setup

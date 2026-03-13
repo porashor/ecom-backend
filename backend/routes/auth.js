@@ -2,15 +2,14 @@ import express from 'express';
 import registerUser from '../libs/registerUser.js';
 import getUser from '../libs/getUser.js';
 import loginUser from '../libs/loginUser.js';
+import { getSelfUser } from '../libs/getUser.js';
 import loggedInCheck, { signOutUser } from '../middleware/loggedinCheck.js';
 
 const router = express.Router();
 
 router.get('/', (req, res) => getUser(req, res));
 
-router.get('/data', loggedInCheck, (req, res) => {
-    res.status(200).json(req.user);
-});
+router.get('/data', loggedInCheck, async (req, res) => getSelfUser(req, res));
 
 
 router.post('/register', async (req, res) => registerUser(req, res));

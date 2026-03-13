@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 
 
-const Nav = () => {
+const Nav = ({setIsLogIn}) => {
 
     const upperNavLinks = [
         {
@@ -26,6 +26,10 @@ const Nav = () => {
             url: 'register'
         },
         {
+            name: "Account",
+            url: 'user'
+        },
+        {
             name: "Help & Support",
             url: 'help'
         }
@@ -39,7 +43,10 @@ const Nav = () => {
                 {
                     upperNavLinks.map((link, index) => (
                         <li key={index}>
-                            <a className='hover:opacity-80 active:opacity-80' href={`/${link.url}`}>{link.name}</a>
+                            {
+                                "login" === link.url || "register" === link.url ?  <button className='hover:opacity-80 active:opacity-80' onClick={()=>setIsLogIn("login" === link.url ? 0 : "register" === link.url ? 1 : 9)}>{link.name}</button> :
+                                <a className='hover:opacity-80 active:opacity-80' onClick={()=>setIsLogIn("login" === link.url ? 0 : "register" === link.url ? 1 : 9)} href={`/${link.url}`}>{link.name}</a>
+                            }
                         </li>
                     ))
                 }

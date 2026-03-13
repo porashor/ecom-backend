@@ -10,11 +10,11 @@ const DeshNav = ({setDeshboard}) => {
       </div>
       <div>
         {
-            deshboardLinks && deshboardLinks.map((item, index)=>(
-                <button onClick={()=>setDeshboard(item)} key={index} className='w-full flex items-center justify-center border-b border-slate-600 cursor-pointer text-2xl font-semibold py-2'>
-                    {item}
-                </button>
-            ))
+          deshboardLinks && deshboardLinks.map((item, index)=>(
+              <button onClick={()=>setDeshboard(item)} key={index} className='w-full flex items-center justify-center border-b border-slate-600 cursor-pointer text-2xl font-semibold py-2'>
+                  {item}
+              </button>
+          ))
         }
       </div>
     </div>
